@@ -1,32 +1,12 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
     provider = "prisma-client-js"
 }
 
 datasource db {
     provider = "postgresql"
-    // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-    // Further reading:
-    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
     url      = env("DATABASE_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    createdBy   User   @relation(fields: [createdById], references: [id])
-    createdById String
-
-    @@index([name])
-}
-
-// Necessary for Next auth
 model Account {
     id                       String  @id @default(cuid())
     userId                   String
@@ -54,15 +34,33 @@ model Session {
     user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model Client {
+    id          String    @id @default(uuid())
+    name        String
+    description String?
+    image       String?
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    users       User[]
+    contacts    Contact[]
+
+    @@index([id])
+}
+
 model User {
-    id            String    @id @default(cuid())
+    id            String       @id @default(cuid())
     name          String?
-    email         String?   @unique
+    email         String?      @unique
     emailVerified DateTime?
     image         String?
+    password      String?
+    clientId      String?
+    client        Client?      @relation(fields: [clientId], references: [id], onDelete: Cascade)
     accounts      Account[]
     sessions      Session[]
-    posts         Post[]
+    createdAt     DateTime     @default(now())
+    updatedAt     DateTime     @updatedAt
+    rolPerUser    RolPerUser[]
 }
 
 model VerificationToken {
@@ -71,4 +69,69 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Role {
+    roleId      String        @id @default(uuid())
+    name        String        @unique
+    description String?
+    moduleId    String
+    rolePerUser RolPerUser[]
+    taskPerRole TaskPerRole[]
+
+    @@index([moduleId])
+}
+
+model RolPerUser {
+    roleId String
+    userId String
+    user   User   @relation(fields: [userId], references: [id])
+    role   Role   @relation(fields: [roleId], references: [roleId])
+
+    @@unique([roleId, userId])
+    @@index([userId])
+}
+
+model Task {
+    taskId      String        @id @default(uuid())
+    name        String
+    description String?
+    moduleId    String
+    groupId     String
+    groupTask   TaskGroup     @relation(fields: [groupId], references: [groupId])
+    taskPerRole TaskPerRole[]
+
+    @@index([groupId])
+}
+
+model TaskGroup {
+    groupId     String  @id @default(uuid())
+    name        String  @unique
+    description String?
+    moduleId    String
+    task        Task[]
+
+    @@index([moduleId])
+}
+
+model TaskPerRole {
+    roleId String
+    taskId String
+    task   Task   @relation(fields: [taskId], references: [taskId])
+    role   Role   @relation(fields: [roleId], references: [roleId])
+
+    @@unique([roleId, taskId])
+    @@index([taskId])
+}
+
+model Contact {
+    id        String   @id @default(uuid())
+    name      String
+    email     String?  @unique
+    phone     String?
+    message   String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    clientId  String
+    client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
 }
