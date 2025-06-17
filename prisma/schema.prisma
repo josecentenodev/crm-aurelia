@@ -47,11 +47,18 @@ model Client {
     @@index([id])
 }
 
+enum UserType {
+    AURELIA
+    CUSTOMER
+}
+
 model User {
     id            String       @id @default(cuid())
     name          String?
     email         String?      @unique
     emailVerified DateTime?
+    type          UserType     @default(CUSTOMER)
+    active        Boolean      @default(true)
     image         String?
     password      String?
     clientId      String?
