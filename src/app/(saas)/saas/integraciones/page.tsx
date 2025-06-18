@@ -1,12 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../_components/ui/card"
-import { Button } from "../_components/ui/button"
-import { Badge } from "../_components/ui/badge"
-import { Switch } from "../_components/ui/switch"
-import { Input } from "../_components/ui/input"
-import { Label } from "../_components/ui/label"
+import { Badge, Button, Input, Label, Switch, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components"
 import { Puzzle, CheckCircle, Calendar, Database, Zap, Settings, Link, FileText } from "lucide-react"
 // TODO: PROBABLEMENTE ESTE SEA EL ULTIMO COMPONENTE QUE SE DESARROLLARA.
 // DEBERA REFACTORIZARSE PARA APLICAR LA MISMA LOGICA DE DESARROLLO QUE EL RESTO DE LA APLICACIÓN.

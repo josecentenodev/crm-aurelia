@@ -1,12 +1,8 @@
 "use client"
-
+// TODO: Migrar este componente al directorio correspondiente al feature especifico
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import { Badge } from "./ui/badge"
-import { Switch } from "./ui/switch"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, Button, Input, Badge, Switch } from "@/components"
 import { X, Send, Bot, User } from "lucide-react"
 
 // Diferentes historiales de mensajes para cada conversación

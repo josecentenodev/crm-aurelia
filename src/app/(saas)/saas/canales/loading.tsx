@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from "../_components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components"
 // TODO: ACA HAY UN LOADER!! EVALUAR SI DEBERIA EXTRAERSE EN SHARED 
 export default function CanalesLoading() {
   return (

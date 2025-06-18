@@ -1,27 +1,9 @@
 "use client"
 
+import { Badge, Button, Card, CardContent } from "@/components"
+import { ChevronDown, Menu, X, Briefcase, CheckCircle, Star, ArrowRight, Phone, BarChart3, Calendar, FileText, Target, Scale, Users, Clock } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
-import {
-  ChevronDown,
-  Menu,
-  X,
-  Briefcase,
-  CheckCircle,
-  Star,
-  ArrowRight,
-  Phone,
-  BarChart3,
-  Calendar,
-  FileText,
-  Target,
-  Scale,
-  Users,
-  Clock,
-} from "lucide-react"
-import { Button } from "../../_components/button"
-import { Badge } from "../../_components/badge"
-import { Card, CardContent } from "../../_components/card"
 
 export default function ServiciosProfesionalesPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

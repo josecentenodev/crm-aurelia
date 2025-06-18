@@ -2,45 +2,13 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../../_components/ui/card"
-import { Button } from "../../../_components/ui/button"
-import {
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  Target,
-  Briefcase,
-  Brain,
-  MessageSquare,
-  GitBranch,
-  Zap,
-  PlayCircle,
-  ClipboardCheck,
-  Lightbulb,
-  Eye,
-} from "lucide-react"
+import { Switch, Badge, Slider, Progress, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Tabs, TabsContent, TabsList, TabsTrigger, Input, Label, Textarea, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Button } from "@/components"
+import { ArrowLeft, ArrowRight, Check, Target, Briefcase, Brain, MessageSquare, GitBranch, Zap, PlayCircle, ClipboardCheck, Lightbulb, Eye } from "lucide-react"
+import { PASOS_LEADS } from "@/server/api/mock-data"
 import Link from "next/link"
-import { Input } from "../../../_components/ui/input"
-import { Label } from "../../../_components/ui/label"
-import { Textarea } from "../../../_components/ui/textarea"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../_components/ui/tabs"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../_components/ui/select"
-import { Switch } from "../../../_components/ui/switch"
-import { Badge } from "../../../_components/ui/badge"
-import { Slider } from "../../../_components/ui/slider"
-import { Progress } from "../../../_components/ui/progress"
 
-// Constantes para los pasos
-const PASOS_LEADS = [
-  { id: 1, nombre: "Información Básica", icono: <Briefcase className="w-4 h-4" /> },
-  { id: 2, nombre: "Criterios de Calificación", icono: <ClipboardCheck className="w-4 h-4" /> },
-  { id: 3, nombre: "Preguntas de Descubrimiento", icono: <MessageSquare className="w-4 h-4" /> },
-  { id: 4, nombre: "Configuración de Scoring", icono: <Target className="w-4 h-4" /> },
-  { id: 5, nombre: "Canales", icono: <GitBranch className="w-4 h-4" /> },
-  { id: 6, nombre: "Escalamiento", icono: <Brain className="w-4 h-4" /> },
-  { id: 7, nombre: "Automatizaciones", icono: <Zap className="w-4 h-4" /> },
-  { id: 8, nombre: "Playground", icono: <PlayCircle className="w-4 h-4" /> },
-]
+// TODO: Este componente es muy grande. Necesita refactorizacion urgente
+
 
 export default function NuevoAsistenteLeadsPage() {
   const router = useRouter()

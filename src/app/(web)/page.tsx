@@ -1,5 +1,6 @@
 "use client"
-
+// TODO: Refactorizar este componente que es gigante y tiene demasiada lógica
+// También se puede dividir en varios componentes más pequeños para mejorar la legibilidad y mantenibilidad
 import { useState } from "react"
 import {
   ArrowRight,
@@ -15,9 +16,7 @@ import {
   Clock,
   Globe,
 } from "lucide-react"
-import { Button } from "./_components/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./_components/card"
-import { Badge } from "./_components/badge"
+import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components"
 import Image from "next/image"
 import Link from "next/link"
 import { VideoModal } from "./_components/VideoModal"

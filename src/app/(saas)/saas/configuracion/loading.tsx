@@ -1,7 +1,7 @@
-import { Card, CardContent, CardHeader } from "../_components/ui/card"
-import { Skeleton } from "../_components/ui/skeleton"
+import { Card, CardContent, CardHeader, Skeleton } from "@/components"
 
 // TODO: ACA HAY UN LOADER!! EVALUAR SI DEBERIA EXTRAERSE EN SHARED 
+// IMPORTANT: Hay un tema con como nextjs utiliza los loaders y los componentes de UI. ANALIZAR
 export default function ConfiguracionLoading() {
   return (
     <div className="space-y-6">

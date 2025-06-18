@@ -1,12 +1,12 @@
 "use client"
 
-import { usePathname, useRouter } from "next/navigation"
+import { Button } from "@/components"
 import { ChevronLeft, ChevronRight, Settings } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { useState, useEffect } from "react"
-import { Button } from "./ui/button"
-import Image from "next/image"
 import { navigation } from "@/lib/constants/navigation"
+import { usePathname, useRouter } from "next/navigation"
+import { useState, useEffect } from "react"
+import Image from "next/image"
 
 
 export function Sidebar() {

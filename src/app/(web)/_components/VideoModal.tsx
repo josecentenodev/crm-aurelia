@@ -1,5 +1,5 @@
 "use client"
-import { Button } from "./button"
+import { Button } from "@/components"
 import { X } from "lucide-react"
 
 interface VideoModalProps {

@@ -1,31 +1,9 @@
 "use client"
-import { useState } from "react"
+
+import { ArrowLeft, ArrowRight, Check, Plus, X, Target, Users, Brain, Zap, Settings, MessageSquare, TrendingUp, Shield, Lightbulb, PlayCircle } from "lucide-react"
+import { Button, Input, Label, Textarea, Progress, Separator, Card, CardContent, CardHeader, CardTitle, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components"
 import { useRouter } from "next/navigation"
-import { Card, CardContent, CardHeader, CardTitle } from "../../../_components/ui/card"
-import { Button } from "../../../_components/ui/button"
-import { Input } from "../../../_components/ui/input"
-import { Label } from "../../../_components/ui/label"
-import { Textarea } from "../../../_components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../_components/ui/select"
-import { Progress } from "../../../_components/ui/progress"
-import { Separator } from "../../../_components/ui/separator"
-import {
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  Plus,
-  X,
-  Target,
-  Users,
-  Brain,
-  Zap,
-  Settings,
-  MessageSquare,
-  TrendingUp,
-  Shield,
-  Lightbulb,
-  PlayCircle,
-} from "lucide-react"
+import { useState } from "react"
 import Link from "next/link"
 
 const TOTAL_STEPS = 8

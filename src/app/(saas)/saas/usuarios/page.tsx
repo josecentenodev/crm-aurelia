@@ -1,29 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../_components/ui/card"
-import { Button } from "../_components/ui/button"
-import { Input } from "../_components/ui/input"
-import { Label } from "../_components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../_components/ui/select"
-import { Badge } from "../_components/ui/badge"
-import { Switch } from "../_components/ui/switch"
-import { Avatar, AvatarFallback, AvatarImage } from "../_components/ui/avatar"
-import {
-  UserCog,
-  Plus,
-  Search,
-  Filter,
-  Mail,
-  Phone,
-  Shield,
-  Eye,
-  Users,
-  Crown,
-  Settings,
-  Trash2,
-  Edit,
-} from "lucide-react"
+import { Avatar, AvatarFallback, AvatarImage, Button, Input, Label, Badge, Switch, Card, CardContent, CardDescription, CardHeader, CardTitle, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components"
+import { UserCog, Plus, Search, Filter, Mail, Phone, Shield, Eye, Users, Crown, Settings, Trash2, Edit } from "lucide-react"
 
 // TODO: ESTE COMPONENTE DEBE SER EXTRAIDO DEL ROUTER PRINCIPAL (LOGICA DE CRM) Y REFACTORIZAR.
 

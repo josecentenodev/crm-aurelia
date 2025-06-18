@@ -1,10 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { Card, CardContent } from "../_components/ui/card"
-import { Input } from "../_components/ui/input"
-import { Badge } from "../_components/ui/badge"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../_components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Card, CardContent, Input, Badge } from "@/components"
 import { Search, Filter } from "lucide-react"
 import { mockConversaciones } from "@/server/api/mock-data"
 import { ChatView } from "../_components/chat-view"

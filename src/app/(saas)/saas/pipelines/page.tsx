@@ -1,9 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "../_components/ui/card"
-import { Button } from "../_components/ui/button"
-import { Badge } from "../_components/ui/badge"
+import { Badge, Button, Card, CardContent, CardHeader, CardTitle } from "@/components"
 import { Plus, Settings, MoreVertical, User, Calendar } from "lucide-react"
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd"
 import { mockCrmData } from "@/server/api/mock-data"

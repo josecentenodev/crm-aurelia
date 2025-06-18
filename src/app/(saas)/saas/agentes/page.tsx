@@ -1,26 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import {
-  Plus,
-  Search,
-  Filter,
-  MoreHorizontal,
-  MessageSquare,
-  Settings,
-  Trash2,
-  Bot,
-  Crown,
-  Users,
-  ShoppingCart,
-  Headphones,
-  Play,
-} from "lucide-react"
-import { Button } from "../_components/ui/button"
-import { Input } from "../_components/ui/input"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../_components/ui/card"
-import { Badge } from "../_components/ui/badge"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../_components/ui/dropdown-menu"
+import { Plus, Search, Filter, MoreHorizontal, MessageSquare, Settings, Trash2, Bot, Crown, Users, ShoppingCart, Headphones, Play } from "lucide-react"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Button, Input, Badge, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components"
 import { PlaygroundChat } from "../_components/playground-chat"
 import Link from "next/link"
 

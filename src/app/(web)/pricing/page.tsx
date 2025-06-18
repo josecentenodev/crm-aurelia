@@ -1,6 +1,5 @@
 import { ArrowRight, MessageSquare, TrendingUp, Users, Zap, CheckCircle, Target, Globe } from "lucide-react"
-import { Button } from "@/app/(web)/_components/button"
-import { Badge } from "@/app/(web)/_components/badge"
+import { Button } from "@/components"
 import Image from "next/image"
 import Link from "next/link"
 

@@ -1,14 +1,9 @@
 "use client"
-
+// TODO: Migrar este componente al directorio correspondiente al feature especifico
 import type React from "react"
 
 import { useState } from "react"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog"
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import { Label } from "./ui/label"
-import { Textarea } from "./ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
+import { Button, Input, Label, Textarea, Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components"
 import { Calendar, Save, X } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 

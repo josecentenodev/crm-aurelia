@@ -1,19 +1,5 @@
-import {
-  ArrowRight,
-  Plane,
-  Users,
-  Clock,
-  CheckCircle,
-  Star,
-  Globe,
-  MessageSquare,
-  BarChart3,
-  Target,
-  Map,
-} from "lucide-react"
-import { Button } from "../../_components/button"
-import { Badge } from "../../_components/badge"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../_components/card"
+import { ArrowRight, Plane, Users, Clock, CheckCircle, Star, Globe, MessageSquare, BarChart3, Target, Map } from "lucide-react"
+import { Button, Badge, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components"
 import Image from "next/image"
 import Link from "next/link"
 

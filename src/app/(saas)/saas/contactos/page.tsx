@@ -1,27 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "../_components/ui/card"
-import { Button } from "../_components/ui/button"
-import { Input } from "../_components/ui/input"
-import { Badge } from "../_components/ui/badge"
-import { Checkbox } from "../_components/ui/checkbox"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../_components/ui/select"
-import {
-  Search,
-  Filter,
-  Users,
-  Plus,
-  Mail,
-  Phone,
-  Calendar,
-  Tag,
-  Download,
-  Upload,
-  Trash2,
-  Loader2,
-  AlertCircle,
-} from "lucide-react"
+import { Button, Input, Badge, Checkbox, Card, CardContent, CardHeader, CardTitle, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components"
+import { Search, Filter, Users, Plus, Mail, Phone, Calendar, Tag, Download, Upload, Trash2, Loader2, AlertCircle } from "lucide-react"
 import { ContactModal } from "../_components/contact-modal"
 import { useToast } from "@/hooks/use-toast"
 

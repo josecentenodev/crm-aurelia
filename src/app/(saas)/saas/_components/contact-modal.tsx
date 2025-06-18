@@ -1,17 +1,10 @@
 "use client"
-
-import type React from "react"
-
-import { useState, useEffect } from "react"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog"
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import { Label } from "./ui/label"
-import { Textarea } from "./ui/textarea"
-import { Badge } from "./ui/badge"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
+// TODO: Migrar este componente al directorio correspondiente al feature especifico
+import { Button, Input, Label, Textarea, Badge, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components"
 import { User, Save, X, Plus, Tag } from "lucide-react"
+import { useState, useEffect } from "react"
 import { useToast } from "@/hooks/use-toast"
+import type React from "react"
 
 interface Contact {
   id: string

@@ -1,18 +1,11 @@
 "use client"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "../../_components/ui/card"
-import { Button } from "../../_components/ui/button"
-import {
-  ArrowLeft,
-  ArrowRight,
-  Bot,
-  Check,
-} from "lucide-react"
-import Link from "next/link"
-import { useToast } from "@/hooks/use-toast"
-import { Badge } from "../../_components/ui/badge"
+import { ArrowLeft, ArrowRight, Bot, Check } from "lucide-react"
+import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components"
 import { TIPOS_AGENTES } from "@/server/api/mock-data"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { useToast } from "@/hooks/use-toast"
+import Link from "next/link"
 
 // TODO: REFACTORIZAR A COMPONENTES MÁS PEQUEÑOS Y REUTILIZABLES
 export default function NuevoAgentePage() {

@@ -1,27 +1,9 @@
 "use client"
 
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./_components/ui/card"
-import { Button } from "./_components/ui/button"
-import { Badge } from "./_components/ui/badge"
-import {
-  Bot,
-  MessageSquare,
-  BarChart3,
-  CheckCircle,
-  TrendingUp,
-  Target,
-  Clock,
-  Plus,
-  Eye,
-  DollarSign,
-  Users,
-  Zap,
-  TrendingDown,
-  Award,
-  Calendar,
-} from "lucide-react"
 import { availableMetrics } from "@/server/api/mock-data"
+import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components"
+import { Bot, MessageSquare, BarChart3, CheckCircle, TrendingUp, Plus, Eye, Award, Calendar } from "lucide-react"
+import { useState } from "react"
 
 
 // Presets predefinidos

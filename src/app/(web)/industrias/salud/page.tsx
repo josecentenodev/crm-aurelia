@@ -1,27 +1,9 @@
 "use client"
 
+import { Button, Badge, Card, CardContent } from "@/components"
+import { ChevronDown, Menu, X, Heart, CheckCircle, Star, ArrowRight, Phone, MessageCircle, BarChart3, Calendar, Stethoscope, Shield, Users, Clock } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
-import { Button } from "@/app/(web)/_components/button"
-import { Card, CardContent } from "@/app/(web)/_components/card"
-import { Badge } from "@/app/(web)/_components/badge"
-import {
-  ChevronDown,
-  Menu,
-  X,
-  Heart,
-  CheckCircle,
-  Star,
-  ArrowRight,
-  Phone,
-  MessageCircle,
-  BarChart3,
-  Calendar,
-  Stethoscope,
-  Shield,
-  Users,
-  Clock,
-} from "lucide-react"
 
 export default function SaludPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

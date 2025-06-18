@@ -1,15 +1,14 @@
 "use client"
 
-import { useState } from "react"
-import { Button } from "./_components/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./_components/card"
-import { Input } from "./_components/input"
-import { Label } from "./_components/label"
-import { Separator } from "./_components/separator"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, Button, Input, Label, Separator } from "@/components"
+import { Eye, EyeOff, Mail, Lock, ArrowLeft } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Eye, EyeOff, Mail, Lock, ArrowLeft } from "lucide-react"
+
+// TODO: Añadir lógica de autenticación real
+// Por ahora, solo se simula la captura de datos y redirección
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)

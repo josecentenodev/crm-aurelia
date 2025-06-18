@@ -1,12 +1,7 @@
 "use client"
-
+// TODO: Migrar este componente al directorio correspondiente al feature especifico
 import { useState, useRef, useEffect } from "react"
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import { Avatar } from "./ui/avatar"
-import { Badge } from "./ui/badge"
-import { Textarea } from "./ui/textarea"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card"
+import { Button, Input, Avatar, Badge, Textarea, Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components"
 import { ThumbsUp, ThumbsDown, Send, Bot, User, Loader2, CheckCircle2, AlertCircle, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -138,7 +133,7 @@ export function PlaygroundChat({
     }
 
     setShowFeedbackModal(false)
-    setShowThankYou(feedbackMessage?.id || null)
+    setShowThankYou(feedbackMessage?.id ?? null)
     setTimeout(() => setShowThankYou(null), 2000)
   }
 
@@ -307,7 +302,7 @@ export function PlaygroundChat({
             onKeyDown={(e) => {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault()
-                handleSendMessage()
+                void handleSendMessage()
               }
             }}
             disabled={isLoading}
@@ -338,7 +333,7 @@ export function PlaygroundChat({
               <div className="space-y-2">
                 <h4 className="text-sm font-medium text-gray-500">Respuesta del asistente:</h4>
                 <p className="text-sm bg-red-50 p-3 rounded-lg border border-red-200">
-                  {feedbackMessage?.content || "Respuesta del asistente"}
+                  {feedbackMessage?.content ?? "Respuesta del asistente"}
                 </p>
               </div>
 

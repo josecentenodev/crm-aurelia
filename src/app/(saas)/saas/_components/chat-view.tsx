@@ -1,14 +1,9 @@
 "use client"
-
-import type React from "react"
+// TODO: Migrar este componente al directorio correspondiente al feature especifico
+import { Button, Input, Badge, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Switch, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components"
 import { useState, useRef, useEffect } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import { Badge } from "./ui/badge"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select"
-import { Switch } from "./ui/switch"
 import { X, Send, Bot, User, Phone, Mail, MapPin, Calendar } from "lucide-react"
+import type React from "react"
 
 // Diferentes historiales de mensajes para cada conversación
 const mensajesPorConversacion: { [key: string]: any[] } = {
