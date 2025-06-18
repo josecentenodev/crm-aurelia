@@ -76,7 +76,7 @@ export default function IntegracionesPage() {
       descripcion: "CRM con inteligencia artificial",
       logo: "🔴",
       categoria: "CRM",
-      documentacion: "https://www.zoho.com/crm/developer/",
+      documentacion: "https://www.zoho.com/saas/developer/",
       conectado: integraciones.zoho,
       caracteristicas: ["IA Zia", "Workflow", "Analytics", "Social CRM"],
     },

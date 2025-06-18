@@ -1,10 +1,10 @@
 import { Bot, MessageSquare, Home, Users, Target, Radio } from "lucide-react"
 
 export const navigation = [
-  { name: "Dashboard", href: "/crm", icon: Home },
-  { name: "Agentes IA", href: "/crm/agentes", icon: Bot },
-  { name: "Conversaciones", href: "/crm/conversaciones", icon: MessageSquare },
-  { name: "Embudos", href: "/crm/pipelines", icon: Target },
-  { name: "Contactos", href: "/crm/contactos", icon: Users },
-  { name: "Canales", href: "/crm/canales", icon: Radio },
+  { name: "Dashboard", href: "/saas", icon: Home },
+  { name: "Agentes IA", href: "/saas/agentes", icon: Bot },
+  { name: "Conversaciones", href: "/saas/conversaciones", icon: MessageSquare },
+  { name: "Embudos", href: "/saas/pipelines", icon: Target },
+  { name: "Contactos", href: "/saas/contactos", icon: Users },
+  { name: "Canales", href: "/saas/canales", icon: Radio },
 ]

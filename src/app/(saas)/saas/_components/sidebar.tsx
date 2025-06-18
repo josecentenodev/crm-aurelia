@@ -24,7 +24,7 @@ export function Sidebar() {
   }
 
   const handleConfiguracion = () => {
-    router.push("/crm/configuracion")
+    router.push("/saas/configuracion")
   }
 
   return (
@@ -60,7 +60,7 @@ export function Sidebar() {
         <ul className="space-y-2">
           {navigation.map((item) => {
             const isActive =
-              pathname === item.href || (item.href === "/crm/asistentes" && pathname.startsWith("/crm/asistentes"))
+              pathname === item.href || (item.href === "/saas/asistentes" && pathname.startsWith("/saas/asistentes"))
             return (
               <li key={item.name}>
                 <button
@@ -95,7 +95,7 @@ export function Sidebar() {
           onClick={handleConfiguracion}
           className={cn(
             "w-full bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-4 hover:from-purple-100 hover:to-pink-100 transition-all duration-200 group",
-            pathname === "/crm/configuracion" && "ring-2 ring-aurelia-primary",
+            pathname === "/saas/configuracion" && "ring-2 ring-aurelia-primary",
           )}
         >
           {!isCollapsed ? (

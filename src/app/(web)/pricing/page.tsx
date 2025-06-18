@@ -351,7 +351,7 @@ export default function PricingPage() {
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm font-geomanist">Integración directa ERP/CRM</span>
+                        <span className="text-sm font-geomanist">Integración directa ERP/saas</span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />

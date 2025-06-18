@@ -23,7 +23,7 @@ export default function LoginPage() {
     console.log("Email:", email)
     console.log("Password:", password)
     // Simulación de redirección tras login exitoso
-    void router.push("/crm")
+    void router.push("/saas")
   }
 
   return (

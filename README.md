@@ -1,29 +1,49 @@
-# Create T3 App
+# 🧠 Soy Aurelia – CRM Conversacional
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Este repositorio contiene el código fuente del CRM conversacional de Soy Aurelia, pensado para brindar a nuestros clientes una plataforma ágil, personalizable y escalable para gestionar sus asistentes virtuales y conversaciones automatizadas.
 
-## What's next? How do I make an app with this?
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## 📁 Estructura general del proyecto
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+La estructura está basada en el enfoque modular que propone Next.js App Router, con una clara separación entre contextos funcionales y lógica compartida.
+``` estructura de carpetas
+/
+├── app/
+│ ├── (web)/ # Sitio público de marketing
+│ ├── (auth)/ # Autenticación y login
+│ ├── (crm)/ # CRM privado del cliente
+│ └── (dashboard)/ # Vista administrativa para gestionar clientes
+│ └── [feature]/ # Cada feature tiene su subcarpeta
+│ └── _components/ # Componentes visuales propios del feature
+│
+├── components/ # Componentes reutilizables globales (UI, layout, etc.)
+├── domain/ # Entidades centrales del sistema (Cliente, Usuario, Asistente, etc.)
+├── services/ # Conexiones a APIs
+├── server/ # Lógica del lado del servidor
+│ ├── auth/ # Módulos de autenticación (ej: middleware, sesiones)
+│ ├── api/ # Endpoints TRPC
+│ ├── actions/ # Server actions de Next.js
+│ └── db.ts # Cliente de base de datos (Prisma)
+│
+├── lib/ # Funciones utilitarias y helpers
+├── store/ # Estado global del frontend (ej: Zustand, Jotai)
+├── hooks/ # Custom hooks (ej: useClient, useSession, etc.)
+├── styles/ # Archivos CSS globales y tokens de diseño
+├── trpc/ # Configuración de TRPC (routers, context, etc.)
+└── README.md
+```
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## 🧱 Principios de arquitectura
 
-## Learn More
+- **Modularidad por contexto**: cada carpeta en `app/(...)` representa una unidad funcional independiente (sitio web, CRM, auth, dashboard).
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- **Componentes locales por feature**: cada ruta contiene su propia carpeta `_components` para mantener el UI acotado al dominio que lo necesita.
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+- **Separación de responsabilidades**:
+  - `domain/` define el **modelo y reglas del negocio** (sin conexión a librerías externas).
+  - `services/` implementa la **conexión con datos y servicios externos**.
+  - `server/` contiene lógica segura que **solo corre del lado del servidor**.
+  
+- **Código reutilizable en `components/`, `hooks/`, `lib/`, `store/`**, para evitar duplicación.
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+---

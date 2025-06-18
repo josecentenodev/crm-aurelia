@@ -38,16 +38,16 @@ model Client {
     id          String    @id @default(uuid())
     name        String
     description String?
-    image       String?
     createdAt   DateTime  @default(now())
     updatedAt   DateTime  @updatedAt
     users       User[]
     contacts    Contact[]
+    agentes     Agente[]
 
     @@index([id])
 }
 
-enum UserType {
+enum TipoUsuario {
     AURELIA
     CUSTOMER
 }
@@ -57,7 +57,7 @@ model User {
     name          String?
     email         String?      @unique
     emailVerified DateTime?
-    type          UserType     @default(CUSTOMER)
+    type          TipoUsuario     @default(CUSTOMER)
     active        Boolean      @default(true)
     image         String?
     password      String?
@@ -141,4 +141,22 @@ model Contact {
     updatedAt DateTime @updatedAt
     clientId  String
     client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+model Agente {
+    id        String   @id @default(uuid())
+    name      String
+    email     String?  @unique
+    type        TipoAgente
+    description String?
+    sysprompt   String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    clientId  String
+    client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+}
+
+enum TipoAgente {
+    AgenteQA
+    AgentePersonalizado
 }
