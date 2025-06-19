@@ -1,11 +1,10 @@
 "use client"
-// TODO: Migrar este componente al directorio correspondiente al feature especifico
-import type React from "react"
 
-import { useState } from "react"
 import { Button, Input, Label, Textarea, Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components"
 import { Calendar, Save, X } from "lucide-react"
+import { useState } from "react"
 import { useToast } from "@/hooks/use-toast"
+import type React from "react"
 
 interface ActivityModalProps {
   isOpen: boolean

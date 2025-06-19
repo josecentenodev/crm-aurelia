@@ -1,32 +1,13 @@
 "use client"
-// TODO: Migrar este componente al directorio correspondiente al feature especifico
+
 import { Button, Input, Label, Textarea, Badge, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components"
 import { User, Save, X, Plus, Tag } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useToast } from "@/hooks/use-toast"
+import type { Contact, ContactModalProps } from "@/domain/Contactos"
 import type React from "react"
 
-interface Contact {
-  id: string
-  nombre: string
-  apellido: string
-  email: string
-  telefono: string
-  empresa?: string
-  canal: string
-  estado: string
-  origen: string
-  etiquetas: string[]
-  notas?: string
-  fechaCreacion: string
-}
 
-interface ContactModalProps {
-  isOpen: boolean
-  onClose: () => void
-  contact: Contact | null
-  onSave: (contact: Contact) => void
-}
 
 export function ContactModal({ isOpen, onClose, contact, onSave }: ContactModalProps) {
   const { toast } = useToast()

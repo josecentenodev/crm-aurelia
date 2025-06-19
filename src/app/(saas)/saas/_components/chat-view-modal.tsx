@@ -1,5 +1,4 @@
 "use client"
-// TODO: Migrar este componente al directorio correspondiente al feature especifico
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, Button, Input, Badge, Switch } from "@/components"

@@ -1,5 +1,5 @@
 "use client"
-// TODO: Migrar este componente al directorio correspondiente al feature especifico
+
 import { Button, Input, Badge, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Switch, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components"
 import { useState, useRef, useEffect } from "react"
 import { X, Send, Bot, User, Phone, Mail, MapPin, Calendar } from "lucide-react"

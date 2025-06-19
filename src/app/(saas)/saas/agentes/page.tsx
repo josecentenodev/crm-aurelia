@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Plus, Search, Filter, MoreHorizontal, MessageSquare, Settings, Trash2, Bot, Crown, Users, ShoppingCart, Headphones, Play } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Button, Input, Badge, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components"
-import { PlaygroundChat } from "../_components/playground-chat"
+import { PlaygroundChat } from "./_components/playground-chat"
 import Link from "next/link"
 
 // Datos mock actualizados con terminología de "Agentes"

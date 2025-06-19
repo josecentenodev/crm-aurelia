@@ -1,131 +1,12 @@
 "use client"
-import { useState } from "react"
+import { ArrowLeft, ArrowRight, Calendar, Clock, Users, Settings, Bell, MessageSquare, Zap, BarChart3, Plus, Trash2, Play, Pause, Check, AlertCircle } from "lucide-react"
+import { Button, Input, Label, Textarea, Badge, Switch, Progress, Card, CardContent, CardDescription, CardHeader, CardTitle, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components"
+import { PASOS_AGENDA, TIPOS_REUNION_PREDEFINIDOS, INTEGRACIONES_CALENDARIO, TEMPLATES_AUTOMATIZACION_AGENDA } from "@/lib/constants/agenda"
 import { useRouter } from "next/navigation"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../_components/ui/card"
-import { Button } from "../../../_components/ui/button"
-import { Input } from "../../../_components/ui/input"
-import { Label } from "../../../_components/ui/label"
-import { Textarea } from "../../../_components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../_components/ui/select"
-import { Badge } from "../../../_components/ui/badge"
-import { Switch } from "../../../_components/ui/switch"
-import { Progress } from "../../../_components/ui/progress"
-import {
-  ArrowLeft,
-  ArrowRight,
-  Calendar,
-  Clock,
-  Users,
-  Settings,
-  Bell,
-  MessageSquare,
-  Zap,
-  BarChart3,
-  Plus,
-  Trash2,
-  Play,
-  Pause,
-  Check,
-  AlertCircle,
-} from "lucide-react"
-import Link from "next/link"
+import { useState } from "react"
 import { useToast } from "@/hooks/use-toast"
+import Link from "next/link"
 
-const PASOS_AGENDA = [
-  {
-    id: 1,
-    titulo: "Información Básica",
-    icono: Calendar,
-    descripcion: "Configura los datos básicos del asistente",
-  },
-  {
-    id: 2,
-    titulo: "Disponibilidad",
-    icono: Clock,
-    descripcion: "Define horarios y días disponibles",
-  },
-  {
-    id: 3,
-    titulo: "Tipos de Reuniones",
-    icono: Users,
-    descripcion: "Configura los tipos de citas",
-  },
-  {
-    id: 4,
-    titulo: "Integraciones",
-    icono: Settings,
-    descripcion: "Conecta calendarios y herramientas",
-  },
-  {
-    id: 5,
-    titulo: "Confirmaciones",
-    icono: Bell,
-    descripcion: "Configura recordatorios automáticos",
-  },
-  {
-    id: 6,
-    titulo: "Canales",
-    icono: MessageSquare,
-    descripcion: "Selecciona canales de comunicación",
-  },
-  {
-    id: 7,
-    titulo: "Automatizaciones",
-    icono: Zap,
-    descripcion: "Configura reglas automáticas",
-  },
-  {
-    id: 8,
-    titulo: "Revisión",
-    icono: BarChart3,
-    descripcion: "Revisa y activa tu asistente",
-  },
-]
-
-const TIPOS_REUNION_PREDEFINIDOS = [
-  { nombre: "Demostración", duracion: 30, descripcion: "Demo del producto" },
-  { nombre: "Consulta Inicial", duracion: 15, descripcion: "Primera consulta gratuita" },
-  { nombre: "Seguimiento", duracion: 20, descripcion: "Reunión de seguimiento" },
-  { nombre: "Onboarding", duracion: 45, descripcion: "Sesión de incorporación" },
-]
-
-const INTEGRACIONES_CALENDARIO = [
-  { id: "google", nombre: "Google Calendar", icono: "📅", popular: true },
-  { id: "outlook", nombre: "Microsoft Outlook", icono: "📧", popular: true },
-  { id: "calendly", nombre: "Calendly", icono: "🗓️", popular: false },
-  { id: "zoom", nombre: "Zoom", icono: "📹", popular: true },
-]
-
-const TEMPLATES_AUTOMATIZACION_AGENDA = [
-  {
-    nombre: "Confirmación Automática",
-    descripcion: "Envía confirmación inmediata cuando se agenda una cita",
-    trigger: "Cita agendada",
-    accion: "Enviar confirmación",
-    popular: true,
-  },
-  {
-    nombre: "Recordatorio 24h",
-    descripcion: "Envía recordatorio 24 horas antes de la reunión",
-    trigger: "Recordatorio enviado",
-    accion: "Enviar recordatorio",
-    popular: true,
-  },
-  {
-    nombre: "Gestión de No Show",
-    descripcion: "Registra automáticamente cuando alguien no asiste",
-    trigger: "No show detectado",
-    accion: "Registrar no show",
-    popular: false,
-  },
-  {
-    nombre: "Reprogramación Inteligente",
-    descripcion: "Ofrece nuevos horarios cuando se cancela una cita",
-    trigger: "Cita cancelada",
-    accion: "Reprogramar automáticamente",
-    popular: true,
-  },
-]
 
 export default function NuevoAsistenteAgendaPage() {
   const router = useRouter()
@@ -350,13 +231,12 @@ export default function NuevoAsistenteAgendaPage() {
               return (
                 <div
                   key={paso.id}
-                  className={`text-center p-2 rounded-lg transition-all ${
-                    completado
+                  className={`text-center p-2 rounded-lg transition-all ${completado
                       ? "bg-green-50 text-green-700"
                       : actual
                         ? "bg-blue-50 text-blue-700"
                         : "bg-gray-50 text-gray-400"
-                  }`}
+                    }`}
                 >
                   <div className="flex justify-center mb-1">
                     {completado ? <Check className="w-5 h-5" /> : <Icono className="w-5 h-5" />}
@@ -654,11 +534,10 @@ function Paso4Integraciones({ formData, onToggle }: any) {
           {INTEGRACIONES_CALENDARIO.map((integracion) => (
             <div
               key={integracion.id}
-              className={`p-4 border-2 rounded-xl cursor-pointer transition-all ${
-                formData.integraciones.includes(integracion.id)
+              className={`p-4 border-2 rounded-xl cursor-pointer transition-all ${formData.integraciones.includes(integracion.id)
                   ? "border-purple-500 bg-purple-50"
                   : "border-gray-200 hover:border-gray-300"
-              }`}
+                }`}
               onClick={() => onToggle(integracion.id)}
             >
               <div className="flex items-center justify-between">
@@ -674,11 +553,10 @@ function Paso4Integraciones({ formData, onToggle }: any) {
                   </div>
                 </div>
                 <div
-                  className={`w-5 h-5 rounded border-2 flex items-center justify-center ${
-                    formData.integraciones.includes(integracion.id)
+                  className={`w-5 h-5 rounded border-2 flex items-center justify-center ${formData.integraciones.includes(integracion.id)
                       ? "border-purple-500 bg-purple-500"
                       : "border-gray-300"
-                  }`}
+                    }`}
                 >
                   {formData.integraciones.includes(integracion.id) && <Check className="w-3 h-3 text-white" />}
                 </div>
@@ -763,11 +641,10 @@ function Paso6Canales({ formData, onToggle }: any) {
           {canales.map((canal) => (
             <div
               key={canal.id}
-              className={`p-4 border-2 rounded-xl cursor-pointer transition-all ${
-                formData.canales.includes(canal.id)
+              className={`p-4 border-2 rounded-xl cursor-pointer transition-all ${formData.canales.includes(canal.id)
                   ? "border-purple-500 bg-purple-50"
                   : "border-gray-200 hover:border-gray-300"
-              }`}
+                }`}
               onClick={() => onToggle(canal.id)}
             >
               <div className="flex items-center justify-between">
@@ -779,9 +656,8 @@ function Paso6Canales({ formData, onToggle }: any) {
                   </div>
                 </div>
                 <div
-                  className={`w-5 h-5 rounded border-2 flex items-center justify-center ${
-                    formData.canales.includes(canal.id) ? "border-purple-500 bg-purple-500" : "border-gray-300"
-                  }`}
+                  className={`w-5 h-5 rounded border-2 flex items-center justify-center ${formData.canales.includes(canal.id) ? "border-purple-500 bg-purple-500" : "border-gray-300"
+                    }`}
                 >
                   {formData.canales.includes(canal.id) && <Check className="w-3 h-3 text-white" />}
                 </div>
@@ -834,9 +710,8 @@ function Paso7Automatizaciones({ formData, onAgregar, onToggle, onEliminar }: an
                     <div className="flex items-center space-x-2 mb-1">
                       <h4 className="font-medium text-sm text-gray-900">{automatizacion.nombre}</h4>
                       <Badge
-                        className={`text-xs ${
-                          automatizacion.activa ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"
-                        } border-0`}
+                        className={`text-xs ${automatizacion.activa ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"
+                          } border-0`}
                       >
                         {automatizacion.activa ? "Activa" : "Pausada"}
                       </Badge>

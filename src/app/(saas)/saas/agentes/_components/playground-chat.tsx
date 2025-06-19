@@ -1,29 +1,11 @@
 "use client"
-// TODO: Migrar este componente al directorio correspondiente al feature especifico
+
 import { useState, useRef, useEffect } from "react"
 import { Button, Input, Avatar, Badge, Textarea, Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components"
 import { ThumbsUp, ThumbsDown, Send, Bot, User, Loader2, CheckCircle2, AlertCircle, X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import type { Message, PlaygroundChatProps } from "@/domain/Mensajes"
 
-// Tipos para los mensajes
-type MessageType = "user" | "assistant"
-
-interface Message {
-  id: string
-  type: MessageType
-  content: string
-  timestamp: Date
-  feedback?: "positive" | "negative" | null
-  isLoading?: boolean
-}
-
-interface PlaygroundChatProps {
-  assistantName: string
-  assistantAvatar?: string
-  initialMessages?: Message[]
-  onFeedbackSubmit?: (message: Message, correctedAnswer?: string) => void
-  className?: string
-}
 
 export function PlaygroundChat({
   assistantName = "Asistente IA",

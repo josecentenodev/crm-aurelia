@@ -1,126 +1,13 @@
 "use client"
-import { useState } from "react"
+import { ArrowLeft, ArrowRight, BookOpen, Upload, Plus, X, Check, AlertCircle, MessageSquare, Settings, BarChart3, FileText, HelpCircle, PlayCircle, Zap, Pause, Play } from "lucide-react"
+import { Switch, Separator, Badge, Progress, Button, Input, Label, Textarea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components"
 import { useRouter } from "next/navigation"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../_components/ui/card"
-import { Button } from "../../../_components/ui/button"
-import { Input } from "../../../_components/ui/input"
-import { Label } from "../../../_components/ui/label"
-import { Textarea } from "../../../_components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../_components/ui/select"
-import { Badge } from "../../../_components/ui/badge"
-import { Progress } from "../../../_components/ui/progress"
-import {
-  ArrowLeft,
-  ArrowRight,
-  BookOpen,
-  Upload,
-  Plus,
-  X,
-  Check,
-  AlertCircle,
-  MessageSquare,
-  Settings,
-  BarChart3,
-  FileText,
-  HelpCircle,
-  PlayCircle,
-  Zap,
-  Pause,
-  Play,
-} from "lucide-react"
-import Link from "next/link"
+import { useState } from "react"
 import { useToast } from "@/hooks/use-toast"
-import { PlaygroundChat } from "../../../_components/playground-chat"
-import { Separator } from "../../../_components/ui/separator"
-import { Switch } from "../../../_components/ui/switch"
+import { PlaygroundChat } from "../../_components/playground-chat"
+import { PASOS_FAQ, CANALES_DISPONIBLES, CATEGORIAS_FAQ } from "@/lib/constants/agentes"
+import Link from "next/link"
 
-const PASOS_FAQ = [
-  {
-    id: 1,
-    titulo: "Información Básica",
-    icono: BookOpen,
-    descripcion: "Configura los datos básicos del asistente",
-  },
-  {
-    id: 2,
-    titulo: "Base de Conocimiento",
-    icono: FileText,
-    descripcion: "Sube documentos y crea FAQs",
-  },
-  {
-    id: 3,
-    titulo: "Configuración de Respuestas",
-    icono: Settings,
-    descripcion: "Define cómo responderá el asistente",
-  },
-  {
-    id: 4,
-    titulo: "Canales",
-    icono: MessageSquare,
-    descripcion: "Conecta los canales de comunicación",
-  },
-  {
-    id: 5,
-    titulo: "Escalamiento",
-    icono: HelpCircle,
-    descripcion: "Define cuándo transferir a humano",
-  },
-  {
-    id: 6,
-    titulo: "Automatizaciones",
-    icono: Zap,
-    descripcion: "Configura reglas automáticas",
-  },
-  {
-    id: 7,
-    titulo: "Revisión",
-    icono: BarChart3,
-    descripcion: "Revisa y activa tu asistente",
-  },
-  {
-    id: 8,
-    titulo: "Playground",
-    icono: PlayCircle,
-    descripcion: "Prueba tu asistente",
-  },
-]
-
-const CATEGORIAS_FAQ = [
-  { id: "productos", nombre: "Productos y Servicios", color: "bg-blue-100 text-blue-800" },
-  { id: "soporte", nombre: "Soporte Técnico", color: "bg-green-100 text-green-800" },
-  { id: "facturacion", nombre: "Facturación y Pagos", color: "bg-yellow-100 text-yellow-800" },
-  { id: "envios", nombre: "Envíos y Devoluciones", color: "bg-purple-100 text-purple-800" },
-  { id: "cuenta", nombre: "Gestión de Cuenta", color: "bg-pink-100 text-pink-800" },
-  { id: "politicas", nombre: "Políticas y Términos", color: "bg-gray-100 text-gray-800" },
-  { id: "general", nombre: "Información General", color: "bg-orange-100 text-orange-800" },
-]
-
-const CANALES_DISPONIBLES = [
-  {
-    id: "whatsapp",
-    nombre: "WhatsApp Business",
-    descripcion: "Respuestas automáticas por WhatsApp",
-    color: "bg-green-100 text-green-800",
-  },
-  {
-    id: "web",
-    nombre: "Chat Web",
-    descripcion: "Widget de chat para tu sitio web",
-    color: "bg-purple-100 text-purple-800",
-  },
-  {
-    id: "facebook",
-    nombre: "Facebook Messenger",
-    descripcion: "Respuestas en Messenger",
-    color: "bg-blue-100 text-blue-800",
-  },
-  {
-    id: "email",
-    nombre: "Email",
-    descripcion: "Respuestas automáticas por email",
-    color: "bg-gray-100 text-gray-800",
-  },
-]
 
 export default function NuevoAsistenteFAQPage() {
   const router = useRouter()

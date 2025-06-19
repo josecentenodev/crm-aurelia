@@ -11,6 +11,11 @@ import {
     BookOpen,
     ShoppingCart,
     Settings,
+    Brain,
+    Briefcase,
+    ClipboardCheck,
+    GitBranch,
+    PlayCircle,
 } from "lucide-react"
 
 

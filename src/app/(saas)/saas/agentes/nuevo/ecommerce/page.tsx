@@ -1,31 +1,10 @@
 "use client"
-import { useState } from "react"
-import React from "react"
-
+import { ArrowLeft, ArrowRight, ShoppingCart, Store, Package, CreditCard, Sparkles, HeadphonesIcon, Zap, Settings, Plus, Trash2 } from "lucide-react"
+import { Button, Input, Label, Textarea, Checkbox, Progress, Card, CardContent, CardDescription, CardHeader, CardTitle, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components"
 import { useRouter } from "next/navigation"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../_components/ui/card"
-import { Button } from "../../../_components/ui/button"
-import { Input } from "../../../_components/ui/input"
-import { Label } from "../../../_components/ui/label"
-import { Textarea } from "../../../_components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../_components/ui/select"
-import { Checkbox } from "../../../_components/ui/checkbox"
-import { Progress } from "../../../_components/ui/progress"
-import {
-  ArrowLeft,
-  ArrowRight,
-  ShoppingCart,
-  Store,
-  Package,
-  CreditCard,
-  Sparkles,
-  HeadphonesIcon,
-  Zap,
-  Settings,
-  Plus,
-  Trash2,
-} from "lucide-react"
+import { useState } from "react"
 import Link from "next/link"
+import React from "react"
 
 const steps = [
   { id: 1, title: "Tienda", icon: Store, description: "Información básica" },

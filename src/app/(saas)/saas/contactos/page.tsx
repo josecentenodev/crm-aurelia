@@ -3,8 +3,9 @@
 import { useState } from "react"
 import { Button, Input, Badge, Checkbox, Card, CardContent, CardHeader, CardTitle, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components"
 import { Search, Filter, Users, Plus, Mail, Phone, Calendar, Tag, Download, Upload, Trash2, Loader2, AlertCircle } from "lucide-react"
-import { ContactModal } from "../_components/contact-modal"
+import { ContactModal } from "./_components/contact-modal"
 import { useToast } from "@/hooks/use-toast"
+import type { Contacto } from "@/domain/Contactos"
 
 // TODO: REFACTORIZAR PAGINA DE CONTACTOS. ÉSTE SERÁ EL PUNTO DE PARTIDA PARA MEJORAR LA ESTRUCTURA Y FUNCIONALIDAD
 
@@ -13,18 +14,7 @@ export default function ContactosPage() {
 
   // Mock data y funciones simuladas
 
-  type Contacto = {
-    id: string
-    first_name: string
-    last_name: string
-    email: string
-    phone: string
-    company?: string
-    status: "nuevo" | "calificado" | "agendado" | "cliente" | "descartado"
-    source: "whatsapp" | "instagram" | "facebook" | "web"
-    tags?: string[]
-    created_at: string
-  }
+
 
   const [contacts, setContacts] = useState<Contacto[]>([
     {

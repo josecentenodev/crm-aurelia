@@ -7,7 +7,7 @@ import Link from "next/link"
 import { Button, Input, Badge, Switch, Label, Card, CardContent, CardDescription, CardHeader, CardTitle, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components"
 import { ArrowLeft, Send, Bot, User, Phone, Mail, MapPin, Calendar, Plus, Clock } from "lucide-react"
 import { mockConversaciones, mockMensajes } from "@/server/api/mock-data"
-import { ActivityModal } from "../../_components/activity-modal"
+import { ActivityModal } from "../_components/activity-modal"
 import { useParams } from 'next/navigation'
 
 // TODO: REFACTORIZAR ESTE COMPONENTE. SEPARAR RESPONSABILIDADES Y MEJORAR LA ESTRUCTURA.
