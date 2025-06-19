@@ -1,4 +1,4 @@
-import { BookOpen, FileText, Settings, MessageSquare, HelpCircle, Zap, BarChart3, PlayCircle } from "lucide-react"
+import { BookOpen, FileText, Settings, MessageSquare, HelpCircle, Zap, BarChart3, PlayCircle, Headphones, ShoppingCart, Users } from "lucide-react"
 
 export const PASOS_FAQ = [
   {
@@ -87,3 +87,39 @@ export const CANALES_DISPONIBLES = [
     color: "bg-gray-100 text-gray-800",
   },
 ]
+
+export const etapasInfo = {
+  primer_contacto: {
+    name: "Primer Contacto",
+    color: "bg-blue-100 text-blue-800",
+    icon: Users,
+    description: "Primeras interacciones con prospects",
+  },
+  leads_calificados: {
+    name: "Leads Calificados",
+    color: "bg-green-100 text-green-800",
+    icon: Users,
+    description: "Leads que pasaron la calificación inicial",
+  },
+  ventas: {
+    name: "Ventas",
+    color: "bg-purple-100 text-purple-800",
+    icon: ShoppingCart,
+    description: "Proceso activo de cierre de ventas",
+  },
+  soporte: {
+    name: "Soporte",
+    color: "bg-orange-100 text-orange-800",
+    icon: Headphones,
+    description: "Atención a clientes existentes",
+  },
+}
+
+export const canalesInfo = {
+  whatsapp: { name: "WhatsApp", color: "bg-green-100 text-green-800" },
+  instagram: { name: "Instagram", color: "bg-pink-100 text-pink-800" },
+  facebook: { name: "Facebook", color: "bg-blue-100 text-blue-800" },
+  web: { name: "Web", color: "bg-purple-100 text-purple-800" },
+  email: { name: "Email", color: "bg-gray-100 text-gray-800" },
+  telefono: { name: "Teléfono", color: "bg-orange-100 text-orange-800" },
+}

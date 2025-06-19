@@ -4,6 +4,7 @@ import { Alert, AlertDescription, Button, Badge, Switch, Input, Label, Card, Car
 import { Radio, CheckCircle, AlertCircle, Settings, ExternalLink, RefreshCw, Zap, Users, MessageSquare } from "lucide-react"
 import { canalesData } from "@/server/api/mock-data"
 import { stats } from "@/server/api/mock-data"
+import { SectionHeader } from "../_components/header"
 // TODO: REFACTORIZAR COMPONENTE. MODULARIZAR EN COMPONENTES MÁS PEQUEÑOS. 
 
 export default function CanalesPage() {
@@ -11,12 +12,7 @@ export default function CanalesPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">Canales de Comunicación</h1>
-        <p className="text-gray-600 mt-1">
-          Conecta tus canales de comunicación para que tus agentes IA puedan interactuar con tus clientes
-        </p>
-      </div>
+      <SectionHeader title={"Canales de Comunicación"} description={"Conecta tus canales de comunicación para que tus agentes IA puedan interactuar con tus clientes"} />
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">

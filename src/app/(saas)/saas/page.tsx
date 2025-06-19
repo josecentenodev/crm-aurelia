@@ -4,6 +4,7 @@ import { availableMetrics } from "@/server/api/mock-data"
 import { Badge, Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components"
 import { Bot, MessageSquare, BarChart3, CheckCircle, TrendingUp, Plus, Eye, Award, Calendar } from "lucide-react"
 import { useState } from "react"
+import { SectionHeader } from "./_components/header"
 
 
 // Presets predefinidos
@@ -71,16 +72,12 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       {/* Header Principal */}
-      <div className="flex items-center justify-between">
-        <div className="space-y-2">
-          <h1 className="text-3xl font-bold text-gray-900">¡Bienvenido a Aurelia! 👋</h1>
-          <p className="text-gray-600">Tu plataforma de inteligencia artificial para automatizar ventas consultivas</p>
-        </div>
+      <SectionHeader title={"¡Bienvenido a Aurelia! 👋"} description={"Tu plataforma de inteligencia artificial para automatizar ventas consultivas"}>
         <Button className="rounded-xl bg-purple-600 hover:bg-purple-700">
           <Plus className="w-4 h-4 mr-2" />
           Nuevo Agente
         </Button>
-      </div>
+      </SectionHeader>
       {/** TODO: ESTE COMPONENTE SE DEBE REFACTORIZAR, VISIBLEKPIS, CHARTS && WIDGETS*/}
       {/* KPIs Principales - Solo mostrar los seleccionados */}
       {visibleKpis.length > 0 && (

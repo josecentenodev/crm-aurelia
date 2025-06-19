@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Badge, Button, Input, Label, Switch, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components"
 import { Puzzle, CheckCircle, Calendar, Database, Zap, Settings, Link, FileText } from "lucide-react"
+import { SectionHeader } from "../_components/header"
 // TODO: PROBABLEMENTE ESTE SEA EL ULTIMO COMPONENTE QUE SE DESARROLLARA.
 // DEBERA REFACTORIZARSE PARA APLICAR LA MISMA LOGICA DE DESARROLLO QUE EL RESTO DE LA APLICACIÓN.
 export default function IntegracionesPage() {
@@ -110,12 +111,7 @@ export default function IntegracionesPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">Integraciones</h1>
-        <p className="text-gray-600 mt-1">
-          Conecta Aurelia con tus herramientas favoritas para maximizar la productividad
-        </p>
-      </div>
+      <SectionHeader title={"Integraciones"} description={"Conecta Aurelia con tus herramientas favoritas para maximizar la productividad"} />
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">

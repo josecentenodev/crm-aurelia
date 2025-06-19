@@ -6,6 +6,7 @@ import { Search, Filter, Users, Plus, Mail, Phone, Calendar, Tag, Download, Uplo
 import { ContactModal } from "./_components/contact-modal"
 import { useToast } from "@/hooks/use-toast"
 import type { Contacto } from "@/domain/Contactos"
+import { SectionHeader } from "../_components/header"
 
 // TODO: REFACTORIZAR PAGINA DE CONTACTOS. ÉSTE SERÁ EL PUNTO DE PARTIDA PARA MEJORAR LA ESTRUCTURA Y FUNCIONALIDAD
 
@@ -315,26 +316,20 @@ export default function ContactosPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Contactos</h1>
-          <p className="text-gray-600 mt-1">Gestiona tu base de datos de contactos y leads</p>
-        </div>
-        <div className="flex space-x-2">
-          <Button variant="outline" className="rounded-xl">
-            <Upload className="w-4 h-4 mr-2" />
-            Importar
-          </Button>
-          <Button variant="outline" className="rounded-xl">
-            <Download className="w-4 h-4 mr-2" />
-            Exportar
-          </Button>
-          <Button className="bg-aurelia-primary hover:bg-purple-700 rounded-xl" onClick={handleCreateContact}>
-            <Plus className="w-4 h-4 mr-2" />
-            Nuevo Contacto
-          </Button>
-        </div>
-      </div>
+      <SectionHeader title={"Contactos"} description={"Gestiona tu base de datos de contactos y leads"}>
+        <Button variant="outline" className="rounded-xl">
+          <Upload className="w-4 h-4 mr-2" />
+          Importar
+        </Button>
+        <Button variant="outline" className="rounded-xl">
+          <Download className="w-4 h-4 mr-2" />
+          Exportar
+        </Button>
+        <Button className="bg-aurelia-primary hover:bg-purple-700 rounded-xl" onClick={handleCreateContact}>
+          <Plus className="w-4 h-4 mr-2" />
+          Nuevo Contacto
+        </Button>
+      </SectionHeader>
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-6">

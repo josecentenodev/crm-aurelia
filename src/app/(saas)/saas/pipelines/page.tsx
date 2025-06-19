@@ -6,6 +6,7 @@ import { Plus, Settings, MoreVertical, User, Calendar } from "lucide-react"
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd"
 import { mockCrmData } from "@/server/api/mock-data"
 import { ChatViewModal } from "../_components/chat-view-modal"
+import { SectionHeader } from "../_components/header"
 
 // TODO: REFACTORIZAR ESTE COMPONENTE, SEPARAR RESPONSABILIDADES, MEJORAR LA ESCALABILIDAD, MODULARIZAR EL CÓDIGO.
 
@@ -52,22 +53,17 @@ export default function CrmPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">CRM - Pipeline de Ventas</h1>
-          <p className="text-gray-600 mt-1">Gestiona tus oportunidades de venta con vista Kanban</p>
-        </div>
-        <div className="flex space-x-2">
-          <Button variant="outline" className="rounded-xl">
-            <Settings className="w-4 h-4 mr-2" />
-            Configurar Pipeline
-          </Button>
-          <Button className="bg-aurelia-primary hover:bg-purple-700 rounded-xl">
-            <Plus className="w-4 h-4 mr-2" />
-            Nueva Oportunidad
-          </Button>
-        </div>
-      </div>
+      <SectionHeader title={"CRM - Pipeline de Ventas"}
+        description={"Gestiona tus oportunidades de venta con vista Kanban"}>
+        <Button variant="outline" className="rounded-xl">
+          <Settings className="w-4 h-4 mr-2" />
+          Configurar Pipeline
+        </Button>
+        <Button className="bg-aurelia-primary hover:bg-purple-700 rounded-xl">
+          <Plus className="w-4 h-4 mr-2" />
+          Nueva Oportunidad
+        </Button>
+      </SectionHeader>
 
       {/* Kanban Board */}
       <div className="h-[calc(100vh-12rem)]">
@@ -100,9 +96,8 @@ export default function CrmPage() {
                     <div
                       ref={provided.innerRef}
                       {...provided.droppableProps}
-                      className={`flex-1 space-y-3 p-2 rounded-xl transition-colors ${
-                        snapshot.isDraggingOver ? "bg-gray-100" : ""
-                      }`}
+                      className={`flex-1 space-y-3 p-2 rounded-xl transition-colors ${snapshot.isDraggingOver ? "bg-gray-100" : ""
+                        }`}
                     >
                       {getOportunidadesPorColumna(columna.id).map((oportunidad, index) => (
                         <Draggable key={oportunidad.id} draggableId={oportunidad.id} index={index}>
@@ -111,9 +106,8 @@ export default function CrmPage() {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-                              className={`rounded-2xl shadow-sm border-0 bg-white cursor-pointer hover:shadow-md transition-all ${
-                                snapshot.isDragging ? "rotate-3 shadow-lg" : ""
-                              } ${oportunidadSeleccionada === oportunidad.id ? "ring-2 ring-aurelia-primary" : ""}`}
+                              className={`rounded-2xl shadow-sm border-0 bg-white cursor-pointer hover:shadow-md transition-all ${snapshot.isDragging ? "rotate-3 shadow-lg" : ""
+                                } ${oportunidadSeleccionada === oportunidad.id ? "ring-2 ring-aurelia-primary" : ""}`}
                               onClick={() => setOportunidadSeleccionada(oportunidad.id)}
                             >
                               <CardContent className="p-4">

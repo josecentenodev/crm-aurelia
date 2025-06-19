@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Avatar, AvatarFallback, AvatarImage, Button, Input, Label, Badge, Switch, Card, CardContent, CardDescription, CardHeader, CardTitle, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components"
 import { UserCog, Plus, Search, Filter, Mail, Phone, Shield, Eye, Users, Crown, Settings, Trash2, Edit } from "lucide-react"
+import { SectionHeader } from "../_components/header"
 
 // TODO: ESTE COMPONENTE DEBE SER EXTRAIDO DEL ROUTER PRINCIPAL (LOGICA DE CRM) Y REFACTORIZAR.
 
@@ -160,11 +161,7 @@ export default function UsuariosPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Gestión de Usuarios</h1>
-          <p className="text-gray-600 mt-1">Administra los usuarios y permisos de tu equipo de ventas</p>
-        </div>
+      <SectionHeader title={"Gestión de Usuarios"} description={"Administra los usuarios y permisos de tu equipo de ventas"}>
         <Button
           onClick={() => setMostrarFormulario(true)}
           className="bg-aurelia-primary hover:bg-purple-700 rounded-xl"
@@ -172,7 +169,7 @@ export default function UsuariosPage() {
           <Plus className="w-4 h-4 mr-2" />
           Nuevo Usuario
         </Button>
-      </div>
+      </SectionHeader>
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">

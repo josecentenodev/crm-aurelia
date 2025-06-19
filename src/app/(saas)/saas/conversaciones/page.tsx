@@ -5,6 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Card, Ca
 import { Search, Filter } from "lucide-react"
 import { mockConversaciones } from "@/server/api/mock-data"
 import { ChatView } from "../_components/chat-view"
+import { SectionHeader } from "../_components/header"
 
 // TODO: ESTE COMPONENET ES MUY COMPLEJO Y DEBERÍA SER REFACTORIZADO, SEPARAR RESPONSABILIDADES, MEJORAR LA ESCALABILIDAD
 
@@ -65,10 +66,7 @@ export default function ConversacionesPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">Conversaciones</h1>
-        <p className="text-gray-600 mt-1">Gestiona todas las conversaciones con tus leads</p>
-      </div>
+      <SectionHeader title={"Conversaciones"} description={"Gestiona todas las conversaciones con tus leads"} />
 
       <div className="flex gap-6" style={{ height: "calc(100vh - 12rem)" }} ref={chatContainerRef}>
         {/* Lista de Conversaciones */}

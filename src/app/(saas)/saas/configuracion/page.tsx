@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Button, Input, Label, Badge, Switch, Card, CardContent, CardDescription, CardHeader, CardTitle, Avatar, AvatarFallback, AvatarImage, Tabs, TabsContent, TabsList, TabsTrigger, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components"
 import { User, CreditCard, Users, Puzzle, Settings, Bell, Download, Eye, Edit, Trash2, Plus, Crown, CheckCircle, Link } from "lucide-react"
 import { usuarios } from "@/server/api/mock-data"
+import { SectionHeader } from "../_components/header"
 
 // TODO: REFACTORIZAR COMPONENTE. MODULARIZAR EN COMPONENTES MÁS PEQUEÑOS.
 // LOS TABS DEBERÍAN SER COMPONENTES INDEPENDIENTES.
@@ -35,10 +36,7 @@ export default function ConfiguracionPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-gray-900">Configuración</h1>
-        <p className="text-gray-600 mt-1">Gestiona tu cuenta, plan, equipo e integraciones</p>
-      </div>
+      <SectionHeader title={"Configuración"} description={"Gestiona tu cuenta, plan, equipo e integraciones"} />
 
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">

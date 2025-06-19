@@ -1,136 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Plus, Search, Filter, MoreHorizontal, MessageSquare, Settings, Trash2, Bot, Crown, Users, ShoppingCart, Headphones, Play } from "lucide-react"
+import { Plus, Search, Filter, MoreHorizontal, MessageSquare, Settings, Trash2, Bot, Crown, Users, Play } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Button, Input, Badge, Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components"
 import { PlaygroundChat } from "./_components/playground-chat"
+import { mockAgents } from "@/server/api/mock-data"
+import { etapasInfo, canalesInfo } from "@/lib/constants/agentes"
 import Link from "next/link"
-
-// Datos mock actualizados con terminología de "Agentes"
-const mockAgents = [
-  {
-    id: "1",
-    name: "Agente de Ventas",
-    description: "Especializado en cerrar ventas y atención comercial",
-    instructions: "Eres un agente especializado en ventas. Sé amable, profesional y ayuda a cerrar ventas.",
-    model: "gpt-4",
-    temperature: 0.7,
-    max_tokens: 1000,
-    is_active: true,
-    is_principal: false,
-    etapas: ["leads_calificados", "ventas"],
-    canales: ["whatsapp", "instagram", "web"],
-    personalidad: "profesional",
-    conversaciones_mes: 89,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  },
-  {
-    id: "2",
-    name: "Agente General",
-    description: "Agente principal para consultas generales",
-    instructions: "Eres el agente principal. Maneja consultas generales y deriva cuando sea necesario.",
-    model: "gpt-4",
-    temperature: 0.8,
-    max_tokens: 1000,
-    is_active: true,
-    is_principal: true,
-    etapas: ["primer_contacto", "leads_calificados", "ventas", "soporte"],
-    canales: ["whatsapp", "web", "email"],
-    personalidad: "amigable",
-    conversaciones_mes: 156,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  },
-  {
-    id: "3",
-    name: "Agente de Leads",
-    description: "Especializado en calificar y capturar leads",
-    instructions: "Eres experto en calificar leads. Haz las preguntas correctas para identificar oportunidades.",
-    model: "gpt-4",
-    temperature: 0.6,
-    max_tokens: 800,
-    is_active: true,
-    is_principal: false,
-    etapas: ["primer_contacto"],
-    canales: ["facebook", "instagram"],
-    personalidad: "consultivo",
-    conversaciones_mes: 67,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  },
-  {
-    id: "4",
-    name: "Agente de Soporte",
-    description: "Atención al cliente y soporte técnico especializado",
-    instructions: "Brinda soporte excepcional a clientes existentes. Resuelve problemas con empatía.",
-    model: "gpt-3.5-turbo",
-    temperature: 0.5,
-    max_tokens: 1000,
-    is_active: true,
-    is_principal: false,
-    etapas: ["soporte"],
-    canales: ["email", "web"],
-    personalidad: "empático",
-    conversaciones_mes: 34,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  },
-]
-
-const etapasInfo = {
-  primer_contacto: {
-    name: "Primer Contacto",
-    color: "bg-blue-100 text-blue-800",
-    icon: Users,
-    description: "Primeras interacciones con prospects",
-  },
-  leads_calificados: {
-    name: "Leads Calificados",
-    color: "bg-green-100 text-green-800",
-    icon: Users,
-    description: "Leads que pasaron la calificación inicial",
-  },
-  ventas: {
-    name: "Ventas",
-    color: "bg-purple-100 text-purple-800",
-    icon: ShoppingCart,
-    description: "Proceso activo de cierre de ventas",
-  },
-  soporte: {
-    name: "Soporte",
-    color: "bg-orange-100 text-orange-800",
-    icon: Headphones,
-    description: "Atención a clientes existentes",
-  },
-}
-
-const canalesInfo = {
-  whatsapp: { name: "WhatsApp", color: "bg-green-100 text-green-800" },
-  instagram: { name: "Instagram", color: "bg-pink-100 text-pink-800" },
-  facebook: { name: "Facebook", color: "bg-blue-100 text-blue-800" },
-  web: { name: "Web", color: "bg-purple-100 text-purple-800" },
-  email: { name: "Email", color: "bg-gray-100 text-gray-800" },
-  telefono: { name: "Teléfono", color: "bg-orange-100 text-orange-800" },
-}
-
-type Agent = {
-  id: string
-  name: string
-  description: string | null
-  instructions: string | null
-  model: string
-  temperature: number
-  max_tokens: number
-  is_active: boolean
-  is_principal?: boolean
-  etapas?: string[]
-  canales?: string[]
-  personalidad?: string
-  conversaciones_mes?: number
-  created_at: string
-  updated_at: string
-}
+import { type Agent } from "@/domain/Agentes"
+import { SectionHeader } from "../_components/header"
 
 export default function AgentesPage() {
   const [agents, setAgents] = useState<Agent[]>([])
@@ -217,22 +95,14 @@ export default function AgentesPage() {
   return (
     <div className="space-y-6">
       {/* Header con estadísticas */}
-      <div className="flex justify-between items-start">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">🤖 Agentes IA</h1>
-          <p className="text-muted-foreground">
-            Gestiona tu embudo de agentes inteligentes
-            {isDemo && <span className="text-amber-600"> (Modo Demo)</span>}
-          </p>
-          {error && <p className="text-sm text-red-600 mt-1">{error}</p>}
-        </div>
+      <SectionHeader title={"🤖 Agentes IA"} description={"Gestiona tu embudo de agentes inteligentes"}>
         <Link href="/asistentes/nuevo">
           <Button>
             <Plus className="mr-2 h-4 w-4" />
             Nuevo Agente
           </Button>
         </Link>
-      </div>
+      </SectionHeader>
 
       {/* Estadísticas rápidas */}
       <div className="grid gap-4 md:grid-cols-4">
@@ -310,8 +180,8 @@ export default function AgentesPage() {
                   <div
                     key={agent.id}
                     className={`p-3 rounded-xl cursor-pointer transition-colors ${selectedAgent?.id === agent.id
-                        ? "bg-blue-100 border-2 border-blue-300"
-                        : "bg-gray-50 hover:bg-gray-100"
+                      ? "bg-blue-100 border-2 border-blue-300"
+                      : "bg-gray-50 hover:bg-gray-100"
                       }`}
                     onClick={() => setSelectedAgent(agent)}
                   >
@@ -355,7 +225,7 @@ export default function AgentesPage() {
                     <CardTitle className="text-base flex items-center gap-2">
                       <Bot className="h-4 w-4" />
                       {agent.name || "Sin nombre"}
-                      {agent.is_principal && <Crown className="h-4 w-4 text-yellow-500" title="Agente Principal" />}
+                      {agent.is_principal && <Crown className="h-4 w-4 text-yellow-500" />}
                     </CardTitle>
                     <CardDescription className="text-sm">{agent.description || "Sin descripción"}</CardDescription>
                   </div>
