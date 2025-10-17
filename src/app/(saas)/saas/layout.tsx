@@ -1,18 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-
-import "@/styles/globals.css"
-import { TRPCReactProvider } from "@/trpc/react"
-import { Sidebar } from "./_components/sidebar"
-import { Toaster } from "@/components"
-
-const inter = Inter({ subsets: ["latin"] })
-
-// TODO: podriamos implementar de cero un sistema de logs.
-// TODO: implementar logica de permisos y roles por acceso/atributos para los usuarios dentro de Aurelia.
-// IMPORTANT: Comenzar el desarrollo de la server api con trpc y prisma.
-
+import { Sidebar } from "./_global_features/sidebar"
+import { Toaster } from "@/components/ui"
+import { Providers } from "@/providers"
+import { ClientProvider } from "@/providers/ClientProvider"
+import { RealtimeNotificationsProvider } from "./_global_features/client-selector/realtime-notifications-provider"
 
 export const metadata: Metadata = {
   title: "Aurelia - Plataforma de IA para Ventas",
@@ -20,22 +12,23 @@ export const metadata: Metadata = {
   generator: 'Aurelia'
 }
 
-export default function RootLayout({
+export default function SaasLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
-      <body className={inter.className}>
-        <TRPCReactProvider>
-          <div className="min-h-screen bg-gray-50">
-            <Sidebar />
-            <main className="main-content min-h-screen p-6">{children}</main>
-          </div>
-          <Toaster />
-        </TRPCReactProvider>
-      </body>
-    </html>
+    <Providers>
+      <ClientProvider>
+        <RealtimeNotificationsProvider />
+        <div className="min-h-screen bg-gray-50">
+          <Sidebar />
+          <main className="main-content min-h-screen">
+            {children}
+          </main>
+        </div>
+        <Toaster />
+      </ClientProvider>
+    </Providers>
   )
 }

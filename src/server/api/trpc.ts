@@ -29,6 +29,16 @@ import { db } from "@/server/db";
 export const createTRPCContext = async (opts: { headers: Headers }) => {
   const session = await auth();
 
+  // Log context creation for debugging
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🔧 Creating tRPC context:', {
+      hasSession: !!session,
+      userId: session?.user?.id,
+      userType: session?.user?.type,
+      clientId: session?.user?.clientId,
+    })
+  }
+
   return {
     db,
     session,
@@ -84,7 +94,7 @@ export const createTRPCRouter = t.router;
  * You can remove this if you don't like it, but it can help catch unwanted waterfalls by simulating
  * network latency that would occur in production but not in local development.
  */
-const timingMiddleware = t.middleware(async ({ next, path }) => {
+const timingMiddleware = t.middleware(async ({ next, path, ctx }) => {
   const start = Date.now();
 
   if (t._config.isDev) {
@@ -120,10 +130,20 @@ export const publicProcedure = t.procedure.use(timingMiddleware);
  */
 export const protectedProcedure = t.procedure
   .use(timingMiddleware)
-  .use(({ ctx, next }) => {
+  .use(({ ctx, next, path }) => {
     if (!ctx.session?.user) {
       throw new TRPCError({ code: "UNAUTHORIZED" });
     }
+
+    // Log client context for debugging
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`🔧 [${path}] Client context:`, {
+        userId: ctx.session.user.id,
+        userType: ctx.session.user.type,
+        clientId: ctx.session.user.clientId,
+      })
+    }
+
     return next({
       ctx: {
         // infers the `session` as non-nullable
@@ -131,3 +151,5 @@ export const protectedProcedure = t.procedure
       },
     });
   });
+
+

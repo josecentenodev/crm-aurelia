@@ -3,7 +3,7 @@
 // Inspired by react-hot-toast library
 import * as React from "react"
 
-import type { ToastActionElement, ToastProps } from "./_components/ui/toast"
+import type { ToastActionElement, ToastProps } from "@/components/ui/toast"
 
 const TOAST_LIMIT = 1
 const TOAST_REMOVE_DELAY = 5000
@@ -105,7 +105,6 @@ export const reducer = (state: State, action: Action): State => {
           t.id === toastId || toastId === undefined
             ? {
                 ...t,
-                open: false,
               }
             : t,
         ),
@@ -137,29 +136,34 @@ function dispatch(action: Action) {
 }
 
 function useToast() {
-  const [toasts, setToasts] = React.useState<ToasterToast[]>(memoryState.toasts)
+  const [state, setState] = React.useState<State>(memoryState)
 
   React.useEffect(() => {
-    listeners.push(setToasts)
+    listeners.push(setState)
     return () => {
-      const index = listeners.indexOf(setToasts)
+      const index = listeners.indexOf(setState)
       if (index > -1) {
         listeners.splice(index, 1)
       }
     }
-  }, [toasts])
+  }, [])
 
   const toast = ({ title, description, variant = "default" }: Omit<ToasterToast, "id">) => {
     const id = genId()
 
-    const newToast: ToasterToast = { id, title, description, variant, open: true }
+    const newToast: ToasterToast = { id, title, description, variant }
 
-    setToasts((prev) => [newToast, ...prev].slice(0, TOAST_LIMIT))
+    dispatch({
+      type: "ADD_TOAST",
+      toast: newToast,
+    })
 
     // Auto remove after 5 seconds
     setTimeout(() => {
       dispatch({ type: "REMOVE_TOAST", toastId: id })
     }, TOAST_REMOVE_DELAY)
+
+    return id
   }
 
   const dismiss = (id: string) => {
@@ -169,7 +173,7 @@ function useToast() {
   return {
     toast,
     dismiss,
-    toasts,
+    toasts: state.toasts,
   }
 }
 

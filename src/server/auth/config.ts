@@ -1,10 +1,35 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { type DefaultSession, type NextAuthConfig } from "next-auth";
+import { type GetServerSidePropsContext } from "next";
+import {
+  getServerSession,
+  type DefaultSession,
+  type NextAuthOptions,
+} from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { db } from "@/server/db";
-import { env } from "@/env";
+import { Logger } from "@/server/utils/logger";
 import type { Adapter } from "next-auth/adapters";
+import { CredentialsSignin } from "next-auth";
+
+// Clases de error personalizadas
+class NoneExistentUserError extends CredentialsSignin {
+  constructor() {
+    super("No existe un usuario con este email");
+  }
+}
+
+class InvalidCredentialsLoginError extends CredentialsSignin {
+  constructor() {
+    super("Credenciales inválidas");
+  }
+}
+
+class InactiveUserError extends CredentialsSignin {
+  constructor() {
+    super("Usuario inactivo");
+  }
+}
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -19,7 +44,8 @@ declare module "next-auth" {
       name: string;
       email: string;
       image: string | null;
-      userType: string;
+      type: string;
+      clientId: string;
     } & DefaultSession["user"];
   }
 
@@ -28,7 +54,8 @@ declare module "next-auth" {
     name?: string | null;
     email?: string | null;
     image?: string | null;
-    userType: string;
+    type: string;
+    clientId: string;
   }
 }
 
@@ -39,35 +66,6 @@ declare module "next-auth" {
  */
 export const authConfig = {
   adapter: PrismaAdapter(db) as Adapter,
-  callbacks: {
-    jwt: async ({ token, user }) => {
-      if (user) {
-        token.id = user.id;
-        token.email = user.email;
-        token.userType = user.userType;
-      }
-      return token;
-    },
-    async redirect({ url, baseUrl }) {
-      if (url.startsWith("/")) return `${baseUrl}${url}`;
-      else if (new URL(url).origin === baseUrl) return url;
-      return baseUrl;
-    },
-    session({ session, token }) {
-      session.user.id = token.id as string;
-      session.user.name = token.name!;
-      session.user.email = token.email!;
-      session.user.userType = token.userType as string;
-      return session;
-    },
-  },
-  pages: {
-    signIn: "/login",
-    error: "/login",
-  },
-  session: {
-    strategy: "jwt",
-  },
   providers: [
     Credentials({
       name: "credentials",
@@ -84,7 +82,7 @@ export const authConfig = {
           where: { email: credentials.email as string },
         });
 
-        if (!user) throw new Error("Usuario inexistente.");
+        if (!user) throw new NoneExistentUserError();
 
         const isValidPassword = await bcrypt.compare(
           credentials.password as string,
@@ -92,18 +90,63 @@ export const authConfig = {
         );
 
         if (!isValidPassword)
-          throw new Error("Credenciales incorrectas.");
+          throw new InvalidCredentialsLoginError()
 
-        if (!user.active) throw new Error("El usuario no se encuentra activo.");
-
+        if (!user.active) throw new InactiveUserError()
+        
+        Logger.auth("User authenticated successfully", { userId: user.id, email: user.email })
+        
         return {
           id: user.id,
           name: user.name,
           email: user.email,
+          clientId: user.clientId ?? "",
           image: user.image,
-          userType: user.type as string,
+          type: user.type as string,
         };
       },
     }),
   ],
-} satisfies NextAuthConfig;
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+        token.type = user.type;
+        token.clientId = user.clientId ?? "";
+      }
+      return token;
+    },
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      else if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
+    },
+    session({ session, token }) {
+      session.user.id = token.id as string;
+      session.user.name = token.name!;
+      session.user.email = token.email!;
+      session.user.type = token.type as string;
+      session.user.clientId = token.clientId as string;
+      return session;
+    },
+    async signIn({user, account, credentials, email, profile}) {
+      Logger.auth("Sign in attempt", { 
+        userId: user?.id, 
+        email: user?.email, 
+        type: user?.type,
+        hasCredentials: !!credentials,
+        hasAccount: !!account
+      })
+      return true
+    }
+  },
+  debug: process.env.NODE_ENV === 'development',
+  pages: {
+    signIn: "/login",
+    error: "/login",
+  },
+  session: {
+    strategy: "jwt",
+  },
+} satisfies NextAuthOptions;

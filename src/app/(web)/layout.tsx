@@ -1,20 +1,21 @@
 import type React from "react"
 import type { Metadata } from "next"
-import "@/styles/globals.css"
+import { Providers } from "@/providers"
 
 export const metadata: Metadata = {
-    title: "Aurelia - Automatización de Ventas con IA",
-    description: "La plataforma de inteligencia artificial que automatiza todo tu proceso de ventas consultivas",
+  title: "Aurelia - Plataforma de IA para Ventas",
+  description: "Tu plataforma de inteligencia artificial para automatizar ventas consultivas",
+  generator: 'Aurelia'
 }
 
-export default function RootLayout({
-    children,
+export default function WebLayout({
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode
 }) {
-    return (
-        <html lang="es">
-            <body className="font-geomanist">{children}</body>
-        </html>
-    )
+  return (
+    <Providers>
+      {children}
+    </Providers>
+  )
 }

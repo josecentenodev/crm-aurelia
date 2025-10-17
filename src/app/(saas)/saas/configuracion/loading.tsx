@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, Skeleton } from "@/components"
+import { Card, CardContent, CardHeader, Skeleton } from "@/components/ui"
 
 // TODO: ACA HAY UN LOADER!! EVALUAR SI DEBERIA EXTRAERSE EN SHARED 
 // IMPORTANT: Hay un tema con como nextjs utiliza los loaders y los componentes de UI. ANALIZAR

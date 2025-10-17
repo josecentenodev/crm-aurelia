@@ -1,49 +1,67 @@
-# 🧠 Soy Aurelia – CRM Conversacional
+# Aurelia Platform
 
-Este repositorio contiene el código fuente del CRM conversacional de Soy Aurelia, pensado para brindar a nuestros clientes una plataforma ágil, personalizable y escalable para gestionar sus asistentes virtuales y conversaciones automatizadas.
+## Reglas de Desarrollo
 
+### Seguridad en SaaS
+- **NUNCA exponer información técnica o IDs en entornos SaaS**
+- No mostrar IDs de templates, agentes, clientes, o cualquier identificador interno
+- No mostrar información de base de datos como timestamps, UUIDs, o metadatos técnicos
+- Solo mostrar información que el usuario final necesita ver
+- En SaaS, el usuario solo debe ver su configuración personalizada, no detalles técnicos
 
-## 📁 Estructura general del proyecto
+### Estructura de Archivos
+- Usar TypeScript para todo el código
+- Componentes en `src/components/`
+- Páginas en `src/app/`
+- API routes en `src/app/api/`
+- Utilidades en `src/lib/`
+- Tipos en `src/domain/`
 
-La estructura está basada en el enfoque modular que propone Next.js App Router, con una clara separación entre contextos funcionales y lógica compartida.
-``` estructura de carpetas
-/
-├── app/
-│ ├── (web)/ # Sitio público de marketing
-│ ├── (auth)/ # Autenticación y login
-│ ├── (crm)/ # CRM privado del cliente
-│ └── (dashboard)/ # Vista administrativa para gestionar clientes
-│ └── [feature]/ # Cada feature tiene su subcarpeta
-│ └── _components/ # Componentes visuales propios del feature
-│
-├── components/ # Componentes reutilizables globales (UI, layout, etc.)
-├── domain/ # Entidades centrales del sistema (Cliente, Usuario, Asistente, etc.)
-├── services/ # Conexiones a APIs
-├── server/ # Lógica del lado del servidor
-│ ├── auth/ # Módulos de autenticación (ej: middleware, sesiones)
-│ ├── api/ # Endpoints TRPC
-│ ├── actions/ # Server actions de Next.js
-│ └── db.ts # Cliente de base de datos (Prisma)
-│
-├── lib/ # Funciones utilitarias y helpers
-├── store/ # Estado global del frontend (ej: Zustand, Jotai)
-├── hooks/ # Custom hooks (ej: useClient, useSession, etc.)
-├── styles/ # Archivos CSS globales y tokens de diseño
-├── trpc/ # Configuración de TRPC (routers, context, etc.)
-└── README.md
-```
+### Convenciones de Nomenclatura
+- Componentes: PascalCase (`UserProfile.tsx`)
+- Archivos: kebab-case (`user-profile.tsx`)
+- Variables: camelCase (`userName`)
+- Constantes: UPPER_SNAKE_CASE (`API_BASE_URL`)
 
-## 🧱 Principios de arquitectura
+### Estilo de Código
+- Usar Prettier para formateo
+- ESLint para linting
+- Preferir funciones sobre clases
+- Usar hooks de React cuando sea posible
+- Documentar funciones complejas
 
-- **Modularidad por contexto**: cada carpeta en `app/(...)` representa una unidad funcional independiente (sitio web, CRM, auth, dashboard).
+### Base de Datos
+- Usar Prisma como ORM
+- Migraciones en `prisma/migrations/`
+- Schema en `prisma/schema.prisma`
+- Siempre validar datos de entrada
 
-- **Componentes locales por feature**: cada ruta contiene su propia carpeta `_components` para mantener el UI acotado al dominio que lo necesita.
+### API
+- Usar tRPC para type-safe APIs
+- Validar inputs con Zod
+- Manejar errores apropiadamente
+- Documentar endpoints complejos
 
-- **Separación de responsabilidades**:
-  - `domain/` define el **modelo y reglas del negocio** (sin conexión a librerías externas).
-  - `services/` implementa la **conexión con datos y servicios externos**.
-  - `server/` contiene lógica segura que **solo corre del lado del servidor**.
-  
-- **Código reutilizable en `components/`, `hooks/`, `lib/`, `store/`**, para evitar duplicación.
+### UI/UX
+- Usar Tailwind CSS para estilos
+- Componentes de UI en `src/components/ui/`
+- Responsive design por defecto
+- Accesibilidad (ARIA labels, etc.)
 
----
+### Testing
+- Tests unitarios para utilidades
+- Tests de integración para APIs
+- Tests E2E para flujos críticos
+
+### Performance
+- Lazy loading para componentes pesados
+- Optimizar imágenes
+- Minimizar bundle size
+- Usar React.memo cuando sea apropiado
+
+### Seguridad
+- Validar todos los inputs
+- Sanitizar datos de salida
+- Usar HTTPS en producción
+- Implementar rate limiting
+- **NUNCA exponer información técnica en SaaS**

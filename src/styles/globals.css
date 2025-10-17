@@ -1,18 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Definición de variantes personalizadas si usás un preprocesador compatible */
 @custom-variant dark (&:is(.dark *));
-
 @custom-variant hover (&:hover);
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
 
 @layer base {
   :root {
+    /* Variables de color */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -23,7 +18,7 @@
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96%;
     --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
+    --muted: 210 16% 85%;
     --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 210 40% 96%;
     --accent-foreground: 222.2 84% 4.9%;
@@ -38,16 +33,13 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-
-    /* Aurelia Colors */
     --aurelia-primary: 267 84% 64%;
     --aurelia-secondary: 316 73% 69%;
-
-    /* Sidebar width variable */
     --sidebar-width: 256px;
   }
 
   .dark {
+    /* Valores para modo oscuro */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
@@ -71,23 +63,10 @@
 }
 
 @layer utilities {
-  .aurelia-primary {
-    @apply bg-[hsl(var(--aurelia-primary))];
-  }
-  .aurelia-secondary {
-    @apply bg-[hsl(var(--aurelia-secondary))];
-  }
-  .text-aurelia-primary {
-    @apply text-[hsl(var(--aurelia-primary))];
-  }
-  .text-aurelia-secondary {
-    @apply text-[hsl(var(--aurelia-secondary))];
-  }
-  .border-aurelia-primary {
-    @apply border-[hsl(var(--aurelia-primary))];
+  .text-balance {
+    text-wrap: balance;
   }
 
-  /* Responsive main content */
   .main-content {
     margin-left: var(--sidebar-width);
     transition: margin-left 0.3s ease;
